@@ -1,15 +1,16 @@
-package com.capstone.productservice.models;
+package com.capstone.productservice.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class Product {
+public class FakeStoreProductDto {
     private Long id;
     private String title;
+    private double price;
+    private String category;
     private String description;
     private String image;
-    private double price;
-    private Category category;
+
 }
