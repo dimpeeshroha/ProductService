@@ -1,5 +1,6 @@
 package com.capstone.productservice.controllers;
 
+import com.capstone.productservice.exceptions.InvalidProductIdException;
 import com.capstone.productservice.models.Product;
 import com.capstone.productservice.services.ProductService;
 import org.springframework.web.bind.annotation.*;
@@ -18,8 +19,9 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public Product getProductById(@PathVariable Long id){
+    public Product getProductById(@PathVariable Long id) throws InvalidProductIdException {
         return productService.getProductById(id);
+
     }
     @GetMapping("/")
     public List<Product> getAllProducts(){
@@ -39,7 +41,8 @@ public class ProductController {
 
     @PutMapping("/{id}")
     public Product replaceProduct(@PathVariable("id") Long id, @RequestBody Product product){
-        return new Product();
+
+        return productService.replaceProduct(id, product);
     }
 
     @DeleteMapping("/{id}")
